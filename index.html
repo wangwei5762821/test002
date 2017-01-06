@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>teplate-demo</title>
+    <script src="js/template.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+
+
+    <script id="test" type="text/html">
+        <h1>{{title}}</h1>
+        <ul>
+            {{each list as value i}}
+            <li>{{value}}</li>
+            <!-- 注意加了#号表示value的值按原始值解析，不会被当作字符串 -->
+            <!-- <li>{{#value}}</li> -->
+            {{/each}}
+        </ul>
+    </script>
+    <script>
+    var data = {
+        title: '基本例子',
+        isAdmin: true,
+        list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+    };
+    var html = template('test', data);
+    document.getElementById('content').innerHTML = html;
+    </script>
+</body>
+
+</html>
